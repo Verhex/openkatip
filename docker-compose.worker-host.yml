@@ -1,0 +1,42 @@
+# Dedicated Linux worker host (also usable as a VM on Windows Server).
+# No provider secrets, API .env, database or server volumes.
+services:
+  manager:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+      target: manager
+    command: [python, -m, katip.workers.manager]
+    user: "1000:1000"
+    group_add:
+      - ${KATIP_DOCKER_GID:?Set Docker socket group ID}
+    environment:
+      KATIP_WORKER_API_URL: ${KATIP_WORKER_API_URL:?Set HTTPS API base URL}
+      KATIP_WORKER_MANAGER_ID: ${KATIP_WORKER_MANAGER_ID:?Set unique manager ID}
+      KATIP_WORKER_MANAGER_KEY: ${KATIP_WORKER_MANAGER_KEY:?Set per-manager secret}
+      KATIP_BOT_SANDBOX: "on"
+      KATIP_BOT_SITE_ISOLATION: "true"
+      KATIP_BOT_IMAGE: ${KATIP_BOT_IMAGE:-katip-worker:local}
+      KATIP_BOT_IMAGE_DIGEST: ${KATIP_BOT_IMAGE_DIGEST:-}
+      KATIP_BOT_MEMORY_MB: ${KATIP_BOT_MEMORY_MB:-1024}
+      KATIP_BOT_CPUS: ${KATIP_BOT_CPUS:-1}
+      KATIP_BOT_NETWORK: ${KATIP_WORKER_NETWORK:-katip-workers}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    networks: [workers]
+    restart: unless-stopped
+  worker-image:
+    image: katip-worker:local
+    build:
+      context: .
+      dockerfile: docker/bot.Dockerfile
+    profiles: [build]
+    network_mode: none
+networks:
+  workers:
+    name: ${KATIP_WORKER_NETWORK:-katip-workers}

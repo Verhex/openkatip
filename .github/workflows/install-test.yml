@@ -1,0 +1,207 @@
+name: Kurulum testi
+
+on:
+  push:
+    # README ve DESIGN dahil yalnız belge değişiklikleri kurulum çalıştırmaz.
+    paths-ignore: ['docs/**', '**/*.md']
+  pull_request:
+    paths-ignore: ['docs/**', '**/*.md']
+  schedule:
+    - cron: '23 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: install-test-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONUTF8: '1'
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        # Açık bash kabuğu pipefail ile çalışır; tee hatayı gizlemez.
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Ruff kurulumu ve kontrolü
+        run: |
+          mkdir -p output/install-test
+          python -c 'import subprocess,sys,tomllib; dev=tomllib.load(open("pyproject.toml","rb"))["project"]["optional-dependencies"]["dev"]; subprocess.check_call([sys.executable,"-m","pip","install",*[d for d in dev if d.startswith("ruff")]])' 2>&1 | tee output/install-test/lint-install.log
+          ruff check . 2>&1 | tee output/install-test/ruff-check.log
+      - name: Biçim kontrolü
+        if: always()
+        run: ruff format --check . 2>&1 | tee output/install-test/ruff-format.log
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: lint
+          path: output/install-test/*.log
+          retention-days: 7
+
+  linux-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Hash doğrulamalı kurulum
+        id: install
+        run: |
+          mkdir -p output/install-test
+          python -m pip install --require-hashes -r requirements.lock 2>&1 | tee output/install-test/install.log
+          python -m pip install --no-deps -e . 2>&1 | tee output/install-test/package.log
+          # Geliştirme araçları hash modundan ayrı çağrıda kurulur.
+          python -c 'import subprocess,sys,tomllib; dev=tomllib.load(open("pyproject.toml","rb"))["project"]["optional-dependencies"]["dev"]; subprocess.check_call([sys.executable,"-m","pip","install",*[d for d in dev if d.startswith("pytest")]])' 2>&1 | tee output/install-test/dev.log
+      - name: Chromium ve sistem bağımlılıkları
+        run: python -m playwright install --with-deps chromium 2>&1 | tee output/install-test/playwright.log
+      - name: Tüm testler
+        run: python -m pytest -q --junitxml=output/install-test/junit.xml 2>&1 | tee output/install-test/pytest.log
+      - name: Gerçek uvicorn ve parser başlangıcı, HTTP, SIGTERM
+        if: always() && steps.install.outcome == 'success'
+        run: python scripts/install_test.py native 2>&1 | tee output/install-test/native.log
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: linux-native-${{ matrix.os }}
+          path: |
+            output/install-test/*.log
+            output/install-test/junit.xml
+          retention-days: 7
+
+  windows-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Windows kilidi ile hash doğrulamalı kurulum
+        id: install
+        run: |
+          New-Item -ItemType Directory -Force output/install-test | Out-Null
+          python -m pip install --require-hashes -r requirements.windows.lock 2>&1 | Tee-Object output/install-test/install.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m pip install --no-deps -e . 2>&1 | Tee-Object output/install-test/package.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -c 'import subprocess,sys,tomllib; dev=tomllib.load(open("pyproject.toml","rb"))["project"]["optional-dependencies"]["dev"]; subprocess.check_call([sys.executable,"-m","pip","install",*[d for d in dev if d.startswith("pytest")]])' 2>&1 | Tee-Object output/install-test/dev.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Chromium kurulumu
+        run: |
+          python -m playwright install chromium 2>&1 | Tee-Object output/install-test/playwright.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Tüm testler
+        run: |
+          python -m pytest -q --junitxml=output/install-test/junit.xml 2>&1 | Tee-Object output/install-test/pytest.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Gerçek uvicorn ve parser başlangıcı, HTTP, süreç sonlanması
+        if: always() && steps.install.outcome == 'success'
+        run: |
+          # Konsolsuz Windows sürecinde SIGTERM yok; TerminateProcess süresi sınanır.
+          python scripts/install_test.py native 2>&1 | Tee-Object output/install-test/native.log
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: windows-native-${{ matrix.os }}
+          path: |
+            output/install-test/*.log
+            output/install-test/junit.xml
+          retention-days: 7
+
+  docker-isolated:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    env:
+      COMPOSE_FILE: docker-compose.isolated.yml
+      COMPOSE_PROJECT_NAME: katip-ci
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Geçici Compose ayarları
+        run: |
+          python scripts/install_test.py compose-env --env-file .env
+          # Compose dosya secret'ları bind mount'tur; UID 1000 okuyabilmeli.
+          sudo chown 1000:1000 output/install-test/data.key output/install-test/parser.key
+          sudo chmod 0400 output/install-test/data.key output/install-test/parser.key
+      - name: API, manager, parser ve worker imajları
+        run: docker compose --profile build build api manager parser worker-image 2>&1 | tee output/install-test/build.log
+      - name: Servisleri başlat ve sağlığı doğrula
+        run: |
+          docker compose up -d 2>&1 | tee output/install-test/up.log
+          python scripts/install_test.py http 2>&1 | tee output/install-test/http.log
+      - name: Soket ve parser ağ izolasyonu
+        run: |
+          docker compose exec -T api test ! -e /var/run/docker.sock
+          docker compose exec -T manager test -S /var/run/docker.sock
+          docker compose exec -T manager test -w /var/run/docker.sock
+          docker compose exec -T parser python -c '
+          import socket
+          from pathlib import Path
+          assert not Path("/var/run/docker.sock").exists()
+          try:
+              connection = socket.create_connection(("1.1.1.1", 443), timeout=3)
+          except OSError:
+              print("Parser internet erişimi engellendi")
+          else:
+              connection.close()
+              raise AssertionError("Parser internete erişebildi")
+          ' 2>&1 | tee output/install-test/isolation.log
+      - name: Host araçları ve gerçek worker kontrolü
+        run: |
+          python -m venv output/install-test/host-venv
+          output/install-test/host-venv/bin/python -m pip install --require-hashes -r requirements.lock 2>&1 | tee output/install-test/host-install.log
+          output/install-test/host-venv/bin/python -m pip install --no-deps -e . 2>&1 | tee output/install-test/host-package.log
+          output/install-test/host-venv/bin/python scripts/worker_container_check.py --image katip-worker:local 2>&1 | tee output/install-test/worker.log
+      - name: Logları kaydet ve servisleri kaldır
+        if: always()
+        run: |
+          mkdir -p output/install-test
+          docker compose logs --no-color > output/install-test/compose.log 2>&1 || true
+          docker compose down -v 2>&1 | tee output/install-test/down.log
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: docker-isolated
+          path: output/install-test/*.log
+          retention-days: 7

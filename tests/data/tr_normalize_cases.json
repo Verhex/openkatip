@@ -1,0 +1,1892 @@
+[
+  {
+    "input": "Ücret 25 TL'den başlıyor.",
+    "expected": "Ücret yirmi beş liradan başlıyor.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "1.250,50 TL'lik bütçeyi onayladık.",
+    "expected": "bin iki yüz elli lira elli kuruşluk bütçeyi onayladık.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "1.0 sürümünde bu hata giderildi.",
+    "expected": "bir nokta sıfır sürümünde bu hata giderildi.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Pakette 5 kg ürün var.",
+    "expected": "Pakette beş kilogram ürün var.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Yanıt 3 sn içinde geliyor.",
+    "expected": "Yanıt üç saniye içinde geliyor.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Toplantı 45 dk sürecek.",
+    "expected": "Toplantı kırk beş dakika sürecek.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Araç 120 km/sa hızla gidiyor.",
+    "expected": "Araç saatte yüz yirmi kilometre hızla gidiyor.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Dr. Ayşe raporu sunacak.",
+    "expected": "doktor Ayşe raporu sunacak.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "3. çeyrekte büyüme bekliyoruz.",
+    "expected": "üçüncü çeyrekte büyüme bekliyoruz.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "2. madde üzerinde uzlaştık.",
+    "expected": "ikinci madde üzerinde uzlaştık.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "15.10.2026 tarihinde görüşelim.",
+    "expected": "on beş Ekim iki bin yirmi altı tarihinde görüşelim.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Depoda 1.234 adet kaldı.",
+    "expected": "Depoda bin iki yüz otuz dört adet kaldı.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Toplantıya 10-15 kişi katılacak.",
+    "expected": "Toplantıya on ila on beş kişi katılacak.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "Oran %3,25'ten düştü.",
+    "expected": "Oran yüzde üç virgül yirmi beşten düştü.",
+    "requires": "any",
+    "note": "Ölçümde bildirilen örüntüler; toplantı cümlesi olarak regresyon."
+  },
+  {
+    "input": "5'te tekrar görüşelim.",
+    "expected": "beşte tekrar görüşelim.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "6'da hazır olun.",
+    "expected": "altıda hazır olun.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "10'dan sonra başlayalım.",
+    "expected": "ondan sonra başlayalım.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "100'ü geçtik.",
+    "expected": "yüzü geçtik.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "1000'den fazla kayıt var.",
+    "expected": "binden fazla kayıt var.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "3'ün katlarını hesapladık.",
+    "expected": "üçün katlarını hesapladık.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "9'a kadar bekleyelim.",
+    "expected": "dokuza kadar bekleyelim.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "40'ı tamamladık.",
+    "expected": "kırkı tamamladık.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "60'ta sınırı aştık.",
+    "expected": "altmışta sınırı aştık.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "2026'da büyüyeceğiz.",
+    "expected": "iki bin yirmi altıda büyüyeceğiz.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "1990'larda kuruldu.",
+    "expected": "bin dokuz yüz doksanlarda kuruldu.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "4'ü seçtik.",
+    "expected": "dördü seçtik.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "4'e indirdik.",
+    "expected": "dörde indirdik.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "4'ten vazgeçtik.",
+    "expected": "dörtten vazgeçtik.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "2'nin sonucu açıklandı.",
+    "expected": "ikinin sonucu açıklandı.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "6'nın yarısı kaldı.",
+    "expected": "altının yarısı kaldı.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "7'ye çıkardık.",
+    "expected": "yediye çıkardık.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "8'le devam edelim.",
+    "expected": "sekizle devam edelim.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "2'yle karşılaştıralım.",
+    "expected": "ikiyle karşılaştıralım.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "0'dan başladık.",
+    "expected": "sıfırdan başladık.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "1'in altında kaldı.",
+    "expected": "birin altında kaldı.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "20'de durduk.",
+    "expected": "yirmide durduk.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "30'dan fazla başvuru var.",
+    "expected": "otuzdan fazla başvuru var.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "50'ye ulaştık.",
+    "expected": "elliye ulaştık.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "70'in üstündeyiz.",
+    "expected": "yetmişin üstündeyiz.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "80'i gördük.",
+    "expected": "sekseni gördük.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "90'da sabitledik.",
+    "expected": "doksanda sabitledik.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "2000'lerden beri çalışıyoruz.",
+    "expected": "iki binlerden beri çalışıyoruz.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "1000'lik paket alalım.",
+    "expected": "binlik paket alalım.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "5’in sonucu geldi.",
+    "expected": "beşin sonucu geldi.",
+    "requires": "any",
+    "note": "Sayılarda hâl ekleri, yumuşama ve çoğul."
+  },
+  {
+    "input": "Bütçe 25 TL.",
+    "expected": "Bütçe yirmi beş lira.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL'lik paket seçildi.",
+    "expected": "yirmi beş liralık paket seçildi.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL'ye alabiliriz.",
+    "expected": "yirmi beş liraya alabiliriz.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL'de kalalım.",
+    "expected": "yirmi beş lirada kalalım.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL'nin tamamı ödendi.",
+    "expected": "yirmi beş liranın tamamı ödendi.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL'yi ayırdık.",
+    "expected": "yirmi beş lirayı ayırdık.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL'yle başlayalım.",
+    "expected": "yirmi beş lirayla başlayalım.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "Tutar 1.250,50 TL olarak belirlendi.",
+    "expected": "Tutar bin iki yüz elli lira elli kuruş olarak belirlendi.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "1.250,50 TL'den vazgeçtik.",
+    "expected": "bin iki yüz elli lira elli kuruştan vazgeçtik.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "1.250,50 TL'ye tamamlayalım.",
+    "expected": "bin iki yüz elli lira elli kuruşa tamamlayalım.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "42.500,00 ₺ tutarındaki faturanız hazır.",
+    "expected": "kırk iki bin beş yüz lira tutarındaki faturanız hazır.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "₺1.250,75 ödedik.",
+    "expected": "bin iki yüz elli lira yetmiş beş kuruş ödedik.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "Ücret 25 ₺'den başlıyor.",
+    "expected": "Ücret yirmi beş liradan başlıyor.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 ₺'lik paket var.",
+    "expected": "yirmi beş liralık paket var.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "$25'ten daha ucuz.",
+    "expected": "yirmi beş dolardan daha ucuz.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 USD'ye anlaştık.",
+    "expected": "yirmi beş dolara anlaştık.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "€15,50 ödenecek.",
+    "expected": "on beş avro elli sent ödenecek.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 €'ya alalım.",
+    "expected": "yirmi beş avroya alalım.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 EUR'luk hizmet aldık.",
+    "expected": "yirmi beş avroluk hizmet aldık.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "£30'luk bütçe yeterli.",
+    "expected": "otuz sterlinlik bütçe yeterli.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "30 GBP'den düştü.",
+    "expected": "otuz sterlinden düştü.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 £'ye çıktı.",
+    "expected": "yirmi beş sterline çıktı.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "30 USD ve €15,50 ayırdık.",
+    "expected": "otuz dolar ve on beş avro elli sent ayırdık.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "0,05 TL eksik kaldı.",
+    "expected": "sıfır lira beş kuruş eksik kaldı.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "1.250,05 TL'lik ödeme var.",
+    "expected": "bin iki yüz elli lira beş kuruşluk ödeme var.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "1.000 TRY gönderildi.",
+    "expected": "bin lira gönderildi.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "21.000 TL yeterli.",
+    "expected": "yirmi bir bin lira yeterli.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "25 TL’lik hediye verelim.",
+    "expected": "yirmi beş liralık hediye verelim.",
+    "requires": "any",
+    "note": "Tutarlar: kısa lira okunuşu, kuruş ve son sözcüğe uyan ek."
+  },
+  {
+    "input": "Oran %5 oldu.",
+    "expected": "Oran yüzde beş oldu.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Oran %12,5 arttı.",
+    "expected": "Oran yüzde on iki buçuk arttı.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Hata %0,5 düzeyinde.",
+    "expected": "Hata yüzde sıfır virgül beş düzeyinde.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "%5'ten aşağı indi.",
+    "expected": "yüzde beşten aşağı indi.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "%12,5'e ulaştı.",
+    "expected": "yüzde on iki buçuğa ulaştı.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "%3,25'in üzerinde.",
+    "expected": "yüzde üç virgül yirmi beşin üzerinde.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "%0,5'lik fark oluştu.",
+    "expected": "yüzde sıfır virgül beşlik fark oluştu.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "% 12 arttı.",
+    "expected": "yüzde on iki arttı.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Oran %87,5 olarak kaydedildi.",
+    "expected": "Oran yüzde seksen yedi buçuk olarak kaydedildi.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Sonuç 3,25 çıktı.",
+    "expected": "Sonuç üç virgül yirmi beş çıktı.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Sonuç 12,05 oldu.",
+    "expected": "Sonuç on iki virgül sıfır beş oldu.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Değer 2,5 olarak ölçüldü.",
+    "expected": "Değer iki buçuk olarak ölçüldü.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Fark 0,05 puan.",
+    "expected": "Fark sıfır virgül sıfır beş puan.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Değer 3,00 olarak yazıldı.",
+    "expected": "Değer üç virgül sıfır sıfır olarak yazıldı.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Sonuç 0,005 çıktı.",
+    "expected": "Sonuç sıfır virgül sıfır sıfır beş çıktı.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "3,25'ten düşelim.",
+    "expected": "üç virgül yirmi beşten düşelim.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "12,05'e tamamlayalım.",
+    "expected": "on iki virgül sıfır beşe tamamlayalım.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "2,5'in yarısı yeterli.",
+    "expected": "iki buçuğun yarısı yeterli.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "1.234,56 puan aldık.",
+    "expected": "bin iki yüz otuz dört virgül elli altı puan aldık.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "%0,00 değişim oldu.",
+    "expected": "yüzde sıfır virgül sıfır sıfır değişim oldu.",
+    "requires": "any",
+    "note": "Yüzdeler ve doğal ondalık okunuş; baştaki sıfırlar korunur."
+  },
+  {
+    "input": "Son tarih 15.10.2026.",
+    "expected": "Son tarih on beş Ekim iki bin yirmi altı.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15.10.2026'da sunalım.",
+    "expected": "on beş Ekim iki bin yirmi altıda sunalım.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15.10.2026'dan sonra başlayalım.",
+    "expected": "on beş Ekim iki bin yirmi altıdan sonra başlayalım.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15.10.2026'ya erteledik.",
+    "expected": "on beş Ekim iki bin yirmi altıya erteledik.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15.10.2026 tarihli rapor geldi.",
+    "expected": "on beş Ekim iki bin yirmi altı tarihli rapor geldi.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15.10.2026 tarihine kadar bekleyelim.",
+    "expected": "on beş Ekim iki bin yirmi altı tarihine kadar bekleyelim.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15 Ekim 2026'da görüşelim.",
+    "expected": "on beş Ekim iki bin yirmi altıda görüşelim.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "1 Ocak'ta başlayalım.",
+    "expected": "bir Ocakta başlayalım.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "29.02.2024 tarihinde yapıldı.",
+    "expected": "yirmi dokuz Şubat iki bin yirmi dört tarihinde yapıldı.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "01.01.2027 tarihli karar geçerli.",
+    "expected": "bir Ocak iki bin yirmi yedi tarihli karar geçerli.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "31.12.2026'da bitirelim.",
+    "expected": "otuz bir Aralık iki bin yirmi altıda bitirelim.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "15/10/2026 tarihinde görüşelim.",
+    "expected": "on beş Ekim iki bin yirmi altı tarihinde görüşelim.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "7 Mayıs 2026'da teslim edelim.",
+    "expected": "yedi Mayıs iki bin yirmi altıda teslim edelim.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "2 Şubat'ta konuşalım.",
+    "expected": "iki Şubatta konuşalım.",
+    "requires": "any",
+    "note": "Tarih, ay adı ve tarih ipuçları."
+  },
+  {
+    "input": "14:30'da başlayalım.",
+    "expected": "on dört otuzda başlayalım.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "09:00'a kadar bekleyelim.",
+    "expected": "dokuza kadar bekleyelim.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "9.30'da?",
+    "expected": "dokuz otuzda?",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "Saat 09:05 olarak belirlendi.",
+    "expected": "Saat dokuz sıfır beş olarak belirlendi.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "Saat 14:00 oldu.",
+    "expected": "Saat on dört oldu.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "23:59'da kapanacak.",
+    "expected": "yirmi üç elli dokuzda kapanacak.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "08:15'ten sonra gelebilirsiniz.",
+    "expected": "sekiz on beşten sonra gelebilirsiniz.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "00:00'da başlayacak.",
+    "expected": "sıfırda başlayacak.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "10:01'de haber verelim.",
+    "expected": "on sıfır birde haber verelim.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "09:30'a aldık.",
+    "expected": "dokuz otuza aldık.",
+    "requires": "any",
+    "note": "Saatler ve noktalı saat için açık hâl eki."
+  },
+  {
+    "input": "3. çeyrek sonuçları iyi.",
+    "expected": "üçüncü çeyrek sonuçları iyi.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "21. yüzyıl için hazırız.",
+    "expected": "yirmi birinci yüzyıl için hazırız.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "XX. yüzyıl verileri incelendi.",
+    "expected": "yirminci yüzyıl verileri incelendi.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "4. toplantı verimliydi.",
+    "expected": "dördüncü toplantı verimliydi.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "100. müşteri geldi.",
+    "expected": "yüzüncü müşteri geldi.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "1. gündem tamamlandı.",
+    "expected": "birinci gündem tamamlandı.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "40. sırada bulunuyoruz.",
+    "expected": "kırkıncı sırada bulunuyoruz.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "2-3 gün yeterli.",
+    "expected": "iki ila üç gün yeterli.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "5–10 dakika bekleyelim.",
+    "expected": "beş ila on dakika bekleyelim.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "10-20 adet ayırın.",
+    "expected": "on ila yirmi adet ayırın.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "1.250.000 kullanıcı var.",
+    "expected": "bir milyon iki yüz elli bin kullanıcı var.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "12.345 kayıt işlendi.",
+    "expected": "on iki bin üç yüz kırk beş kayıt işlendi.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "Toplam 40.",
+    "expected": "Toplam kırk.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "Yıl 2026. Sonra görüşelim.",
+    "expected": "Yıl iki bin yirmi altı. Sonra görüşelim.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "2.5.1 sürümü çıktı.",
+    "expected": "iki nokta beş nokta bir sürümü çıktı.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "Sürüm 1.0 hazır.",
+    "expected": "Sürüm bir nokta sıfır hazır.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "1.234 sürümünü kullanıyoruz.",
+    "expected": "bir nokta iki yüz otuz dört sürümünü kullanıyoruz.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "2.0'dan sonra değişti.",
+    "expected": "iki nokta sıfırdan sonra değişti.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "10.2 sürümüne geçelim.",
+    "expected": "on nokta iki sürümüne geçelim.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "2025 ve 2026 sonuçlarını karşılaştıralım.",
+    "expected": "iki bin yirmi beş ve iki bin yirmi altı sonuçlarını karşılaştıralım.",
+    "requires": "any",
+    "note": "Sıra sayıları, aralıklar, binlik sayılar ve sürümler."
+  },
+  {
+    "input": "2,5 kg malzeme geldi.",
+    "expected": "iki buçuk kilogram malzeme geldi.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "12,05 km yol kaldı.",
+    "expected": "on iki virgül sıfır beş kilometre yol kaldı.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "5 kg'dan fazla almayalım.",
+    "expected": "beş kilogramdan fazla almayalım.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "3 sn'ye indirdik.",
+    "expected": "üç saniyeye indirdik.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "45 dk'lık görüşme yapalım.",
+    "expected": "kırk beş dakikalık görüşme yapalım.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "120 km/sa hız sınırıdır.",
+    "expected": "saatte yüz yirmi kilometre hız sınırıdır.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "500 g ürün gönderildi.",
+    "expected": "beş yüz gram ürün gönderildi.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "250 ml örnek yeterli.",
+    "expected": "iki yüz elli mililitre örnek yeterli.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "10 cm boşluk bırakın.",
+    "expected": "on santimetre boşluk bırakın.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "Prof. Can toplantıya katılacak.",
+    "expected": "profesör Can toplantıya katılacak.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "Doç. Ece bilgi verecek.",
+    "expected": "doçent Ece bilgi verecek.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "Dosya vb. belgeleri paylaşın.",
+    "expected": "Dosya ve benzeri belgeleri paylaşın.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "Kalem vs. malzemeleri aldık.",
+    "expected": "Kalem vesaire malzemeleri aldık.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "Öneriler, örn. raporu paylaşmak, değerlendirildi.",
+    "expected": "Öneriler, örneğin raporu paylaşmak, değerlendirildi.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "KDV dahil hesaplandı.",
+    "expected": "katma değer vergisi dahil hesaplandı.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "Tutar TL olarak gösterildi.",
+    "expected": "Tutar Türk lirası olarak gösterildi.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "0532 123 45 67 numarasını arayın.",
+    "expected": "sıfır beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi numarasını arayın.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "0212 555 12 34 üzerinden ulaşın.",
+    "expected": "sıfır iki yüz on iki beş yüz elli beş on iki otuz dört üzerinden ulaşın.",
+    "requires": "any",
+    "note": "Birimler, kısaltmalar ve telefonlar."
+  },
+  {
+    "input": "www.example.com adresini ziyaret edin.",
+    "expected": "example nokta kom adresini ziyaret edin.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "https://example.com üzerinden başvurun.",
+    "expected": "example nokta kom üzerinden başvurun.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "destek@example.com adresine yazın.",
+    "expected": "destek et example nokta kom adresine yazın.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "https://www.example.com adresi açık.",
+    "expected": "example nokta kom adresi açık.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "example.com sayfasını açın.",
+    "expected": "example nokta kom sayfasını açın.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "https://example.com/rapor adresi hazır.",
+    "expected": "example nokta kom bölü rapor adresi hazır.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "www.example.com.",
+    "expected": "example nokta kom.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "destek_ekibi@example.com üzerinden ulaşın.",
+    "expected": "destek alt çizgi ekibi et example nokta kom üzerinden ulaşın.",
+    "requires": "any",
+    "note": "Adresler: protokol/www atılır; domain com olarak korunur."
+  },
+  {
+    "input": "API ve CEO toplantıya hazır.",
+    "expected": "API ve CEO toplantıya hazır.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "KPI ve Q4 raporunu paylaşın.",
+    "expected": "KPI ve Q4 raporunu paylaşın.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "API'si bugün güncellendi.",
+    "expected": "API'si bugün güncellendi.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "CEO'nun kararı beklenecek.",
+    "expected": "CEO'nun kararı beklenecek.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "Çalışmalar iyi gidiyor.",
+    "expected": "Çalışmalar iyi gidiyor.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "Deniz Bey, Selin Hanım ve Ayşe Yılmaz sonuçları paylaşacak.",
+    "expected": "Deniz Bey, Selin Hanım ve Ayşe Yılmaz sonuçları paylaşacak.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "İş bölümü tamamlandı, teşekkür ederim.",
+    "expected": "İş bölümü tamamlandı, teşekkür ederim.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "Önümüzdeki hafta yeniden görüşelim.",
+    "expected": "Önümüzdeki hafta yeniden görüşelim.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "Raporu ekiple paylaştım.",
+    "expected": "Raporu ekiple paylaştım.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "API için 5 kişi ayıralım.",
+    "expected": "API için beş kişi ayıralım.",
+    "requires": "any",
+    "note": "Sözlükten sonra kalan İngilizce kısaltmalar ve düz metin korunur."
+  },
+  {
+    "input": "IBAN TR33 0006 1005 1978 6457 8413 26 olarak kaydedildi.",
+    "expected": "iban te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı olarak kaydedildi.",
+    "requires": "ntr",
+    "note": "IBAN gruplarını rakam rakam okuma Rust çekirdeğine bırakılır."
+  },
+  {
+    "input": "15% indirim",
+    "expected": "yüzde on beş indirim",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "4,8 % ek ücret",
+    "expected": "yüzde dört virgül sekiz ek ücret",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "15 % indirim",
+    "expected": "yüzde on beş indirim",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "%15 indirim",
+    "expected": "yüzde on beş indirim",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "% 15 indirim",
+    "expected": "yüzde on beş indirim",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "4,8% ek ücret",
+    "expected": "yüzde dört virgül sekiz ek ücret",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "%4,8 ek ücret",
+    "expected": "yüzde dört virgül sekiz ek ücret",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "% 4,8 ek ücret",
+    "expected": "yüzde dört virgül sekiz ek ücret",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "15%'lik",
+    "expected": "yüzde on beşlik",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "15 %'lik",
+    "expected": "yüzde on beşlik",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "%20'si",
+    "expected": "yüzde yirmisi",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "20%’sı",
+    "expected": "yüzde yirmisi",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "6 %‘ü",
+    "expected": "yüzde altıyı",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "4,8%´dan",
+    "expected": "yüzde dört virgül sekizden",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "0,05% artış",
+    "expected": "yüzde sıfır virgül sıfır beş artış",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "1.250 % artış",
+    "expected": "yüzde bin iki yüz elli artış",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "(% 15), ardından 20%.",
+    "expected": "(yüzde on beş), ardından yüzde yirmi.",
+    "requires": "any",
+    "note": "Yüzde işaretinin iki konumu, boşluklar ve ek uyumu."
+  },
+  {
+    "input": "daire 25’deki",
+    "expected": "daire yirmi beşteki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "daire 25'deki",
+    "expected": "daire yirmi beşteki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "daire 25‘daki",
+    "expected": "daire yirmi beşteki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "daire 25´daki",
+    "expected": "daire yirmi beşteki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "3866'ı",
+    "expected": "üç bin sekiz yüz altmış altıyı",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "3866’ü",
+    "expected": "üç bin sekiz yüz altmış altıyı",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "121 TL’e",
+    "expected": "yüz yirmi bir liraya",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "₺100’ü",
+    "expected": "yüz lirayı",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "25 TL‘den",
+    "expected": "yirmi beş liradan",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "25 TL´deki",
+    "expected": "yirmi beş liradaki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "5 kg’e",
+    "expected": "beş kilograma",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "5 kg‘daki",
+    "expected": "beş kilogramdaki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "5 km´dan",
+    "expected": "beş kilometreden",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "40'ca",
+    "expected": "kırkça",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "3’cı",
+    "expected": "üççü",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "6'deki",
+    "expected": "altıdaki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "4'daki",
+    "expected": "dörtteki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "4'ı",
+    "expected": "dördü",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "7'nı",
+    "expected": "yediyi",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "6'si",
+    "expected": "altısı",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "3'sı",
+    "expected": "üçü",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "14:30´deki",
+    "expected": "on dört otuzdaki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "09.30‘da",
+    "expected": "dokuz otuzda",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "15.10.2026´de",
+    "expected": "on beş Ekim iki bin yirmi altıda",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "2.5‘dan sürüm",
+    "expected": "iki nokta beşten sürüm",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "Dr.‘dan",
+    "expected": "doktordan",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "Prof.´deki",
+    "expected": "profesördeki",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "TL‘e",
+    "expected": "Türk lirasına",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "KDV´den",
+    "expected": "katma değer vergisinden",
+    "requires": "any",
+    "note": "Kesme çeşitleri ve konuşulan sözcükten yeniden türetilen ekler."
+  },
+  {
+    "input": "ATM",
+    "expected": "ateme",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "ATM'den",
+    "expected": "atemeden",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "ATM‘a",
+    "expected": "atemeye",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "EFT",
+    "expected": "efete",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "EFT'yi",
+    "expected": "efeteyi",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "EFT´dan",
+    "expected": "efeteden",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "SGK",
+    "expected": "segeka",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "SGK’deki",
+    "expected": "segekadaki",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "KDV",
+    "expected": "katma değer vergisi",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "PTT",
+    "expected": "petete",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "PTT’ı",
+    "expected": "peteteyi",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TC",
+    "expected": "tece",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TC'nin",
+    "expected": "tecenin",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "THY",
+    "expected": "teheye",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "THY‘na",
+    "expected": "teheyeye",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TCMB",
+    "expected": "tecemebe",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "SPK",
+    "expected": "sepeka",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "BDDK",
+    "expected": "bededeka",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "BDDK´den",
+    "expected": "bededekadan",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TBMM",
+    "expected": "tebememe",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TBMM'ye",
+    "expected": "tebememeye",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "NATO",
+    "expected": "nato",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "KOBİ",
+    "expected": "kobi",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "KOBİ’ı",
+    "expected": "kobiyi",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "ASELSAN",
+    "expected": "aselsan",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TÜBİTAK",
+    "expected": "tübitak",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "TÜBİTAK‘de",
+    "expected": "tübitakta",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "İSKİ",
+    "expected": "iski",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "İSKİ´dan",
+    "expected": "iskiden",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "IBAN",
+    "expected": "iban",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "2G 3G 4G 5G",
+    "expected": "iki ge üç ge dört ge beş ge",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "2G’den",
+    "expected": "iki geden",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "3G'yi",
+    "expected": "üç geyi",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "4G‘da",
+    "expected": "dört gede",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "5G´a",
+    "expected": "beş geye",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "API CEO KPI Q4 CRM ERP",
+    "expected": "API CEO KPI Q4 CRM ERP",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "API'si CRM’de ERP´ye",
+    "expected": "API'si CRM’de ERP´ye",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "XATM ATMci SGKX x3G 3Gx",
+    "expected": "XATM ATMci SGKX x3G 3Gx",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "ATM_15 SGK-25 ID%15 15%ID",
+    "expected": "ATM_15 SGK-25 ID%15 15%ID",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "https://ATM.com/SGK%15/3G",
+    "expected": "ATM nokta kom bölü SGK yüzde 15 bölü 3G",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "ATM@SGK.com",
+    "expected": "ATM et SGK nokta kom",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "https://example.com/a%20b",
+    "expected": "example nokta kom bölü a yüzde 20b",
+    "requires": "any",
+    "note": "Sınırlı kurum sözlüğü, mekanik harf adları ve yerleşmiş sözcükler."
+  },
+  {
+    "input": "310348 TL'dir",
+    "expected": "üç yüz on bin üç yüz kırk sekiz liradır",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "₺484´dür",
+    "expected": "dört yüz seksen dört liradır",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "960,50 TL‘dir",
+    "expected": "dokuz yüz altmış lira elli kuruştur",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "5'di",
+    "expected": "beşti",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "ATM’dır",
+    "expected": "atemedir",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "%20'sını",
+    "expected": "yüzde yirmisini",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "15%‘ında",
+    "expected": "yüzde on beşinde",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "20%´sındaki",
+    "expected": "yüzde yirmisindeki",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "%6'sinden",
+    "expected": "yüzde altısından",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "4,8 %’lik",
+    "expected": "yüzde dört virgül sekizlik",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "% 4,8'den",
+    "expected": "yüzde dört virgül sekizden",
+    "requires": "any",
+    "note": "Bildirme, iyelik ve hâl eklerinde konuşulan gövdeden uyum ve sertleşme."
+  },
+  {
+    "input": "1,5",
+    "expected": "bir buçuk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "2,5 milyon dolar",
+    "expected": "iki buçuk milyon dolar",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "%12,5",
+    "expected": "yüzde on iki buçuk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "%1,5'luk",
+    "expected": "yüzde bir buçukluk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "14,5'ti",
+    "expected": "on dört buçuktu",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "3,5 kg",
+    "expected": "üç buçuk kilogram",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "7,5 saat",
+    "expected": "yedi buçuk saat",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "2,5'a",
+    "expected": "iki buçuğa",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "4,5'u",
+    "expected": "dört buçuğu",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "1,5'un",
+    "expected": "bir buçuğun",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "6,5'ta",
+    "expected": "altı buçukta",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "6,5'tan",
+    "expected": "altı buçuktan",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "8,5'luk",
+    "expected": "sekiz buçukluk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "9,5'tir",
+    "expected": "dokuz buçuktur",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "2,5’e",
+    "expected": "iki buçuğa",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "4,5‘i",
+    "expected": "dört buçuğu",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "1,5´in",
+    "expected": "bir buçuğun",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "6,5'te",
+    "expected": "altı buçukta",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "6,5'ten",
+    "expected": "altı buçuktan",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "8,5'lik",
+    "expected": "sekiz buçukluk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "9,5'dir",
+    "expected": "dokuz buçuktur",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "%2,5'e",
+    "expected": "yüzde iki buçuğa",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "12,5%",
+    "expected": "yüzde on iki buçuk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "1,5%'lik",
+    "expected": "yüzde bir buçukluk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "%4,5'ini",
+    "expected": "yüzde dört buçuğunu",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "1.234,5",
+    "expected": "bin iki yüz otuz dört buçuk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "0,5",
+    "expected": "sıfır virgül beş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "%0,5",
+    "expected": "yüzde sıfır virgül beş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "0,5'e",
+    "expected": "sıfır virgül beşe",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "3,25",
+    "expected": "üç virgül yirmi beş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "12,05",
+    "expected": "on iki virgül sıfır beş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "2,50",
+    "expected": "iki virgül elli",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "2,5 TL",
+    "expected": "iki lira elli kuruş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "₺2,5",
+    "expected": "iki lira elli kuruş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "$1,5",
+    "expected": "bir dolar elli sent",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "2,5 TL'lik",
+    "expected": "iki lira elli kuruşluk",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "1.5",
+    "expected": "bir nokta beş",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "v2.5",
+    "expected": "v2.5",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "14:30",
+    "expected": "on dört otuz",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "09.30'da",
+    "expected": "dokuz otuzda",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "THY ile 1,5 saat",
+    "expected": "teheye ile bir buçuk saat",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "3866 nolu",
+    "expected": "üç bin sekiz yüz altmış altı nolu",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  },
+  {
+    "input": "3866 numaralı",
+    "expected": "üç bin sekiz yüz altmış altı numaralı",
+    "requires": "any",
+    "note": "Buçuk okuması, ek uyumu ve yumuşama; diğer okuma biçimleri korunur."
+  }
+]

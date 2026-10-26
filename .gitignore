@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Araç önbellekleri
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+node_modules/
+output/
+.playwright-cli/
+
+# Gizli bilgiler — asla commit'lenmez
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Çalışma verisi: veritabanı, raporlar, ekran görüntüleri, indirilen modeller, kayıtlar
+data/
+# Sabit test corpus'u çalışma verisi değildir.
+!tests/data/
+!tests/data/tr_normalize_cases.json
+recordings/
+*.db
+*.sqlite
+*.onnx
+*.wav
+*.pcm
+*.log
+
+# Editör / işletim sistemi
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+/katip-erisim.txt
+
+# İç planlama ve analiz belgeleri: yalnız yerelde tutulur, ürün paketine girmez
+plan.md
+docs/internal/
+
+# Stitch yerel çalışma dosyaları (istemler, ham CLI çıktıları, yakalamalar)
+.stitch/
+
+# Local release validation logs and temporary fixtures.
+/.release-work/

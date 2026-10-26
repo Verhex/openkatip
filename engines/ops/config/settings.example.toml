@@ -1,0 +1,74 @@
+owner_slack_id = "REPLACE_WITH_OWNER_SLACK_ID"
+database_path = "../state/ops.sqlite3"
+approval_ttl_hours = 72
+timezone = "Europe/Istanbul"
+ops_dir = "../work"
+dry_run = true
+content_excluded_repos = []
+max_tool_rounds = 3
+
+[github]
+org = "Example"
+token_file = "/opt/katip/secrets/ops/github_token"
+
+[geo]
+mention_names = ["Example", "Example Product"]
+citation_domains = ["example.com"]
+competitors = [] # Add approved competitor names for deterministic mention scoring.
+assistants = ["claude-sonnet"] # Add other enabled executors explicitly.
+
+[schedules.pipeline]
+day_of_week = "tue"
+hour = 10
+
+[schedules.icerik]
+day_of_week = "wed"
+hour = 10
+
+[schedules.geo]
+day_of_week = "thu"
+hour = 10
+
+[schedules.cuma]
+day_of_week = "fri"
+hour = 16
+
+[odoo]
+base_url = "http://odoo-test:8069"
+db = "katip_agent_test"
+key_file = "/opt/katip/secrets/ops/odoo_api_key_test"
+timeout_seconds = 30
+
+[slack]
+slack_bot_token = "/opt/katip/secrets/ops/slack_bot_token"
+slack_app_token = "/opt/katip/secrets/ops/slack_app_token"
+
+[slack.channels]
+ops = "CREPLACEOPS"
+ops_approvals = "CREPLACEAPPROVALS"
+pipeline = "CREPLACEPIPELINE"
+social = "CREPLACESOCIAL"
+
+[policy]
+banned_terms = [] # Configure terms that must never appear in public drafts.
+customer_names = []
+personal_email_domains = []
+allowed_kinds = [
+  "odoo.create_lead", "odoo.move_lead_stage", "odoo.log_activity",
+  "odoo.add_note", "odoo.create_task", "odoo.update_task", "file.write", "slack.post",
+]
+
+[policy.approval_rules]
+stage = 1
+routine_kinds = ["odoo.create_lead", "odoo.move_lead_stage", "odoo.create_task"]
+always_approval = ["slack.post"]
+
+[policy.approval_rules.stage1]
+"odoo.create_lead" = true
+"odoo.move_lead_stage" = true
+"odoo.log_activity" = false
+"odoo.add_note" = false
+"odoo.create_task" = true
+"odoo.update_task" = false
+"file.write" = true
+"slack.post" = true

@@ -1,0 +1,127 @@
+# Tek müşteri hostu: Docker soketi yalnız manager'da bulunur.
+# Parser yalnız API ile paylaşılan, internete kapalı ağdadır.
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+      target: api
+    env_file: .env
+    environment:
+      KATIP_DATABASE_URL: ${KATIP_DATABASE_URL:?Set a PostgreSQL connection URL}
+      KATIP_DATA_DIR: /data
+      KATIP_REQUIRE_ENCRYPTION: "true"
+      KATIP_DATA_KEY_FILE: /run/secrets/data_key
+      KATIP_BOT_BACKEND: remote
+      KATIP_BOT_SANDBOX: "on"
+      KATIP_BOT_SITE_ISOLATION: "true"
+      KATIP_BOT_BLOCK_PRIVATE_NETWORK: "true"
+      KATIP_INGEST_LOCAL_ONLY: "false"
+      KATIP_WORKER_MANAGER_KEYS: '{"single-host":"${KATIP_WORKER_MANAGER_KEY:?Set a unique manager secret of at least 32 characters}"}'
+      KATIP_PARSER_URL: http://parser:8001
+      KATIP_PARSER_KEY_FILE: /run/secrets/parser_auth
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - server-data:/data
+    secrets: [parser_auth, data_key]
+    networks: [control, workers, management, parsing]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      parser:
+        condition: service_started
+    restart: unless-stopped
+  manager:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+      target: manager
+    user: "1000:1000"
+    group_add:
+      - ${KATIP_DOCKER_GID:?Set Docker socket group ID}
+    environment:
+      KATIP_WORKER_API_URL: http://api:8000
+      KATIP_WORKER_API_INTERNAL_HOSTNAME: api
+      KATIP_WORKER_MANAGER_ID: single-host
+      KATIP_WORKER_MANAGER_KEY: ${KATIP_WORKER_MANAGER_KEY:?Set a unique manager secret of at least 32 characters}
+      KATIP_BOT_SANDBOX: "on"
+      KATIP_BOT_SITE_ISOLATION: "true"
+      KATIP_BOT_IMAGE: ${KATIP_BOT_IMAGE:-katip-worker:local}
+      KATIP_BOT_IMAGE_DIGEST: ${KATIP_BOT_IMAGE_DIGEST:-}
+      KATIP_BOT_NETWORK: ${KATIP_WORKER_NETWORK:-katip-workers}
+      KATIP_BOT_MEMORY_MB: ${KATIP_BOT_MEMORY_MB:-1024}
+      KATIP_BOT_CPUS: ${KATIP_BOT_CPUS:-1}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 0.5
+    mem_limit: 256m
+    pids_limit: 64
+    networks: [management]
+    depends_on: [api]
+    restart: unless-stopped
+  parser:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+      target: parser
+    user: "1000:1000"
+    environment:
+      KATIP_PARSER_KEY_FILE: /run/secrets/parser_auth
+      KATIP_DOCUMENT_MAX_BYTES: ${KATIP_DOCUMENT_MAX_BYTES:-8388608}
+      KATIP_DOCUMENT_PARSER_TIMEOUT_S: ${KATIP_DOCUMENT_PARSER_TIMEOUT_S:-20}
+    secrets: [parser_auth]
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 1
+    mem_limit: 768m
+    pids_limit: 64
+    networks: [parsing]
+    restart: unless-stopped
+  worker-image:
+    image: katip-worker:local
+    build:
+      context: .
+      dockerfile: docker/bot.Dockerfile
+    profiles: [build]
+    network_mode: none
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: katip
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a unique database password}
+      POSTGRES_DB: katip
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks: [control]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U katip -d katip"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+networks:
+  control:
+    internal: true
+  workers:
+    name: ${KATIP_WORKER_NETWORK:-katip-workers}
+  management:
+    internal: true
+  parsing:
+    internal: true
+secrets:
+  data_key:
+    file: ${KATIP_DATA_KEY_FILE:?Toplantı veri anahtarı dosyasının yolunu ayarlayın}
+  parser_auth:
+    file: ${KATIP_PARSER_KEY_FILE:?Set the path to the generated parser secret file}
+volumes:
+  server-data:
+  database:

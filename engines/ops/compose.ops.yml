@@ -1,0 +1,100 @@
+name: katip-ops
+
+services:
+  ops-agent:
+    image: katip-ops:${OPS_IMAGE_TAG:-m4-m5}
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: [serve]
+    init: true
+    restart: unless-stopped
+    user: "10001:10001"
+    networks: [ops-internal, ops-odoo]
+    environment:
+      HTTPS_PROXY: http://ops-egress:3128
+      HTTP_PROXY: http://ops-egress:3128
+      NO_PROXY: odoo-test,localhost,127.0.0.1
+      KATIP_OPS_CONFIG: /opt/katip/ops/config
+      KATIP_CONFIG_DIR: /opt/katip/ops/config
+    volumes:
+      - type: bind
+        source: /opt/katip/secrets/ops/anthropic_api_key
+        target: /opt/katip/secrets/ops/anthropic_api_key
+        read_only: true
+      - type: bind
+        source: /opt/katip/secrets/ops/slack_bot_token
+        target: /opt/katip/secrets/ops/slack_bot_token
+        read_only: true
+      - type: bind
+        source: /opt/katip/secrets/ops/slack_app_token
+        target: /opt/katip/secrets/ops/slack_app_token
+        read_only: true
+      - type: bind
+        source: /opt/katip/secrets/ops/odoo_api_key_test
+        target: /opt/katip/secrets/ops/odoo_api_key_test
+        read_only: true
+      - type: bind
+        source: /opt/katip/secrets/ops/github_token
+        target: /opt/katip/secrets/ops/github_token
+        read_only: true
+      - type: bind
+        source: /opt/katip/ops/config
+        target: /opt/katip/ops/config
+        read_only: true
+      - type: bind
+        source: /opt/katip/ops/state
+        target: /opt/katip/ops/state
+      - type: bind
+        source: /opt/katip/ops/work
+        target: /opt/katip/ops/work
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=64m"]
+    cpus: 1
+    mem_limit: 1g
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on: [ops-egress, odoo-test]
+
+  ops-egress:
+    image: ubuntu/squid:6.6-24.04_edge
+    restart: unless-stopped
+    networks: [ops-internal, ops-external]
+    volumes:
+      - ./squid/squid.conf:/etc/squid/squid.conf:ro
+      - ./squid/allowlist.txt:/etc/squid/allowlist.txt:ro
+
+  odoo-test:
+    image: ${ODOO_IMAGE:?Set an approved Odoo 19 image tag or digest}
+    restart: unless-stopped
+    # Bypass image entrypoint DB defaults: all DB credentials come from this file.
+    entrypoint: [odoo]
+    command:
+      # Database, dbfilter, list_db, data_dir, workers and cron are set in this file (Odoo 19 option names).
+      - --config=/run/secrets/odoo_test.conf
+    networks: [ops-odoo, odoo-db]
+    volumes:
+      - type: bind
+        source: /opt/katip/secrets/ops/odoo_test.conf
+        target: /run/secrets/odoo_test.conf
+        read_only: true
+      - type: bind
+        source: ${ODOO_TEST_FILESTORE:?Set ODOO_TEST_FILESTORE to a separate test data directory}
+        target: /var/lib/odoo
+      - type: bind
+        source: ${ODOO_ADDONS_DIR:?Set ODOO_ADDONS_DIR to the production custom addons directory}
+        target: /mnt/extra-addons
+        read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+
+networks:
+  ops-internal:
+    internal: true
+  ops-odoo:
+    internal: true
+  ops-external:
+    driver: bridge
+  odoo-db:
+    external: true
+    name: ${ODOO_DB_NETWORK:?Set ODOO_DB_NETWORK to the production PostgreSQL network}

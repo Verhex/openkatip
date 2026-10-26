@@ -1,0 +1,30 @@
+# Neutral Slack manifest. Tokens and owner/channel IDs belong in installation config.
+display_information:
+  name: Katip Ops
+  description: Operations proposals and owner approvals
+features:
+  bot_user:
+    display_name: Katip
+    always_online: false
+  slash_commands:
+    - command: /katip
+      description: Operations status and owner commands
+      usage_hint: yardım
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - commands
+      - im:history
+      - im:write
+settings:
+  socket_mode_enabled: true
+  interactivity:
+    is_enabled: true
+  event_subscriptions:
+    bot_events:
+      - message.im
+  org_deploy_enabled: false
+  token_rotation_enabled: false
+# Create a separate app-level token with connections:write for Socket Mode.

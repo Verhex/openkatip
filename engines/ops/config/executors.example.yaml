@@ -1,0 +1,55 @@
+# Route order is significant. Exact task types take precedence over globs;
+# overlapping globs use declaration order. No price is assumed by the engine.
+executors:
+  claude-sonnet:
+    provider: claude
+    enabled: true
+    model: claude-sonnet-5-5
+    key_file: /opt/katip/secrets/ops/anthropic_api_key
+    allowed_data_classes: [public, internal, personal, customer]
+    thinking: adaptive
+    effort: medium
+    # Budget must cover both thinking and the final structured answer.
+    max_tokens: 16000
+    server_fallback: false
+    web_search_type: web_search_20260209
+  claude-opus:
+    provider: claude
+    enabled: true
+    model: claude-opus-5-5
+    key_file: /opt/katip/secrets/ops/anthropic_api_key
+    allowed_data_classes: [public, internal, personal, customer]
+    thinking: adaptive
+    effort: high
+    max_tokens: 16000
+  openai:
+    provider: openai
+    enabled: false
+    model: REPLACE_WITH_OPENAI_MODEL_ID
+    key_file: /opt/katip/secrets/ops/openai_api_key
+    allowed_data_classes: [public, internal, personal, customer]
+  deepseek:
+    provider: deepseek
+    enabled: false
+    model: REPLACE_WITH_DEEPSEEK_MODEL_ID
+    base_url: https://api.deepseek.com
+    key_file: /opt/katip/secrets/ops/deepseek_api_key
+    allowed_data_classes: [public, internal]
+  xai:
+    provider: xai
+    enabled: false
+    model: disabled
+    key_file: /opt/katip/secrets/ops/xai_api_key
+    allowed_data_classes: [public]
+
+routing:
+  default: [claude-sonnet]
+  routes:
+    "content.*": [claude-sonnet, openai]
+    "pipeline.*": [claude-sonnet]
+    "review.friday": [claude-opus, claude-sonnet]
+
+# Optional prices keyed by exact model ID. All five rates must be supplied.
+# Token rates: USD / million; web_search: USD / thousand searches.
+# Missing rates keep Cost.usd null; zero is an explicit rate, not a default.
+prices: {}

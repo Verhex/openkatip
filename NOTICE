@@ -1,0 +1,40 @@
+Katip — third-party components
+
+This notice preserves source attributions; dependency licenses are independent
+of the repository MIT license. Retain the complete license/notice files supplied
+with redistributed wheels, binaries, fonts and optional model downloads.
+
+PDF presentation rendering
+  pypdfium2 5.14.0 — Apache-2.0 or BSD-3-Clause
+  https://github.com/pypdfium2-team/pypdfium2
+  PDFium — BSD-style license; bundled dependencies carry their own licenses.
+  Complete licenses and notices are included in the distributed wheel under
+  pypdfium2-*.dist-info/licenses/.
+  API documentation: https://pypdfium2-team.github.io/pypdfium2/python_api.html
+
+Turkish text normalization
+  normalizer-tr — Apache-2.0 — https://github.com/erdemtuna/normalizer-tr
+
+Legacy optional speaker-embedding model
+  WeSpeaker ResNet34-LM (VoxCeleb)
+  https://huggingface.co/Wespeaker/wespeaker-voxceleb-resnet34-LM
+  Creative Commons Attribution 4.0 (CC BY 4.0)
+  Wang, H. et al., "WeSpeaker: A Research and Production oriented Speaker Embedding
+  Learning Toolkit", ICASSP 2023. https://github.com/wenet-e2e/wespeaker
+  MeetingSession does not enable biometric recognition. Model weights, if fetched,
+  retain their own license and are not relicensed under MIT.
+
+Panel fonts (bundled local WOFF2 from Google Fonts)
+  Sora — SIL Open Font License 1.1 — web/fonts/sora-OFL.txt
+    Source: https://github.com/google/fonts/tree/main/ofl/sora
+  Plus Jakarta Sans — SIL Open Font License 1.1 — web/fonts/plus-jakarta-sans-OFL.txt
+    Source: https://github.com/google/fonts/tree/main/ofl/plusjakartasans
+  JetBrains Mono — SIL Open Font License 1.1 — web/fonts/jetbrains-mono-OFL.txt
+    Source: https://github.com/google/fonts/tree/main/ofl/jetbrainsmono
+  Latin and Latin-Ext files were obtained via fonts.googleapis.com/fonts.gstatic.com;
+  client browsers request only this installation's /fonts/ assets.
+
+Microsoft Teams manifest schema
+  MicrosoftTeams.schema.json, schema version 1.30; source provenance is recorded in
+  src/katip/teams/assets/README.txt. It remains Microsoft-authored schema material;
+  this project's MIT license does not relicense third-party material.

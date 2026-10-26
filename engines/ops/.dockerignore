@@ -1,0 +1,13 @@
+.venv
+.git
+.test-tmp
+__pycache__
+*.sqlite3*
+config
+tests
+.mypy_cache
+.ruff_cache
+.pytest_cache
+work
+state
+secrets

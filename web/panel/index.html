@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Katip — Canlı Altyazı</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/admin/static/cini.css">
+<link rel="stylesheet" href="/panel/static/panel.css">
+<script src="/panel/static/panel.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="panel-brand"><div class="brand-mark"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div><div><h1>Katip</h1><span>Canlı altyazı</span></div></div>
+  <span class="badge" id="state" role="status" aria-live="polite">bağlanıyor…</span>
+  <span class="badge offrec" id="offrec" hidden>kayıt dışı</span>
+  <div class="spacer"></div>
+  <div class="modes" title="Katip'in toplantıdaki cevap modu">
+    <button id="modeChat" type="button" aria-pressed="false">Yazılı</button>
+    <button id="modeVoice" type="button" aria-pressed="false">Sesli</button>
+  </div>
+  <div id="roster"></div>
+</header>
+<main>
+  <section id="srcPane"><h2><span class="column-dot" aria-hidden="true"></span>Canlı transkript <span class="column-label">Kaynak</span></h2><div class="empty" id="srcEmpty">Konuşma bekleniyor…</div></section>
+  <section id="dstPane"><h2><span class="column-dot translation" aria-hidden="true"></span>Canlı çeviri</h2><div class="empty" id="dstEmpty">Çeviri bekleniyor…</div></section>
+</main>
+<div id="feed"></div>
+
+</body>
+</html>

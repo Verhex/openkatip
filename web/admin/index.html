@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Katip · Yönetim</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/admin/static/cini.css">
+<link rel="stylesheet" href="/admin/static/admin.css">
+<script src="/admin/static/admin.js" defer></script>
+</head>
+<body>
+
+<!-- Giriş -->
+<section id="login" class="login" hidden>
+  <form id="loginForm" class="login-card" autocomplete="off">
+    <div class="brand-block">
+      <img id="loginLogo" class="brand-logo" alt="" hidden>
+      <div class="brand-mark" id="loginMark"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <h1>Katip</h1>
+      <p class="muted">Yönetim paneli</p>
+    </div>
+    <label for="loginEmail">Şirket e-postası</label>
+    <input id="loginEmail" type="email" autocomplete="username" maxlength="320" placeholder="ad@example.com">
+    <p class="fine">İlk yönetici kurulumu için e-posta alanı boş bırakılabilir. Şirket hesaplarını yönetici açar.</p>
+    <label for="password">Parola</label>
+    <input id="password" type="password" autocomplete="current-password" required maxlength="256">
+    <button type="submit" class="primary wide">Giriş yap</button>
+    <p id="loginError" class="error" role="alert"></p>
+    <p class="fine">Tüm girişler kaydedilir. Hatalı denemelerde erişim geçici olarak kilitlenir.</p>
+  </form>
+</section>
+
+<!-- Uygulama -->
+<div id="app" class="app" hidden>
+  <aside class="sidebar">
+    <div class="brand">
+      <img id="logo" class="brand-logo small" alt="" hidden>
+      <div class="brand-mark small" id="mark"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div><strong>Katip</strong><span class="muted">Toplantı asistanı</span></div>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Yönetim bölümleri">
+      <button data-tab="overview" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Genel bakış</button>
+      <button data-tab="meetings"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></svg>Toplantılar</button>
+      <button data-tab="usage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20v-6m7 6V4m7 16V9"/></svg>Kullanım</button>
+      <button data-tab="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 3 4 1 1 4 2 2-2 3-1 4-4 1-3 2-3-2-4-1-1-4-2-3 2-2 1-4 4-1Z"/><circle cx="12" cy="12" r="3"/></svg>Ayarlar</button>
+      <button data-tab="branding"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 7 4h10l3 16M6 15h12M10 10h4"/></svg>Marka</button>
+      <button data-tab="people"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-4a6 6 0 0 1 12 0v4m2-17a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5v2"/></svg>Kişiler</button>
+      <button data-tab="users">Kullanıcılar</button>
+      <button data-tab="security"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6Z"/></svg>Güvenlik</button>
+    </nav>
+  </aside>
+  <header class="topbar">
+    <div class="workspace"><strong id="brandName">Katip</strong><span class="muted" id="version"></span></div>
+    <div class="user"><span id="userEmail" class="mono"></span><span id="userRole" class="muted"></span></div>
+    <button id="logout" class="ghost">Çıkış</button>
+  </header>
+
+  <main>
+    <!-- Genel bakış -->
+    <section data-view="overview">
+      <div class="page-heading"><h1>Genel bakış</h1><p>Toplantılar, sistem durumu ve bekleyen işler.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div class="card overview-metrics"><div class="stats">
+            <div><span class="stat" id="statBots">–</span><span class="muted">Çalışan bot</span></div>
+            <div><span class="stat" id="statToday">–</span><span class="muted">Bugünkü dakika</span></div>
+          </div></div>
+      <div class="grid two overview-grid">
+        <div class="card">
+          <h2>Toplantıya gönder</h2>
+          <form id="joinForm" class="stack">
+            <label for="joinUrl">Toplantı linki (Teams, Meet, Zoom)</label>
+            <input id="joinUrl" type="url" required placeholder="https://teams.microsoft.com/meet/…" maxlength="2000">
+            <label for="joinTitle">Toplantı adı <span class="muted">(isteğe bağlı, rapor konusu olur)</span></label>
+            <input id="joinTitle" type="text" maxlength="200" placeholder="Örn. Haftalık satış toplantısı">
+            <label for="joinParticipants">Katılımcı e-postaları (isteğe bağlı, her satırda Ad Soyad &lt;mail@şirket.com&gt;)</label>
+            <textarea id="joinParticipants" rows="3" placeholder="Ayşe Yılmaz &lt;ayse@example.com&gt;"></textarea>
+            <label for="joinDocuments">Toplantıya özel belgeler (PDF, PowerPoint, Word, TXT)</label>
+            <input id="joinDocuments" type="file" multiple accept=".pdf,.pptx,.docx,.txt">
+            <label class="check"><input id="joinPresentation" type="checkbox"> Sunum olarak kullan (PDF)</label>
+            <p class="fine">Seçildiğinde PDF'nin aslı şifreli saklanır. Katip kendi ekranından sunar. En fazla 60 slayt; birden fazla PDF varsa son yüklenen sunulur.</p>
+            <p class="fine">Eklediğiniz içerikler yalnız bu toplantıda soru-cevap için kullanılır ve katılımcılarla paylaşılır. Gizli bilgiler eklemeyin. PowerPoint konuşmacı notları ve gizli slaytlar alınmaz. Dosya başına en fazla 8 MB, en fazla 8 belge.</p>
+            <label for="joinMode">Mod</label>
+            <select id="joinMode">
+              <option value="tam">Tam katılım: agent, sesli cevap, çeviri</option>
+              <option value="kayit">Sessiz kayıt: gün boyu, yalnız transkript ve rapor</option>
+            </select>
+            <button type="submit" class="primary">Katip'i gönder</button>
+            <p id="joinResult" class="result"></p>
+          </form>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2>Sistem durumu</h2>
+            <button id="healthRefresh" class="ghost small">Yenile</button>
+          </div>
+          <ul id="health" class="health"></ul>
+          <p class="fine" id="healthAge"></p>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Aktif toplantılar</h2>
+        <div class="table-wrap">
+          <table id="sessions">
+            <thead><tr><th>Toplantı</th><th>Sahip</th><th>Durum</th><th>Cevap modu</th><th>Süre</th><th>Platform</th><th>Maliyet</th><th>İşlemler</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p id="noSessions" class="muted">Şu an aktif toplantı yok.</p>
+      </div>
+      <div class="card">
+        <h2>Toplantı işlerinin durumu</h2>
+        <p class="muted">Çıkış isteği, worker kapanışı doğrulanınca tamamlanır. Kapanışı belirsiz işler kapasiteyi dolu tutar.</p>
+        <div class="table-wrap"><table id="workerJobs">
+          <thead><tr><th>Oturum</th><th>Durum</th><th>Son kontrol</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <p id="noWorkerJobs" class="muted">Takip edilen toplantı işi yok.</p>
+      </div>
+      <div id="meetingPresentation" class="card stack" hidden aria-live="polite"></div>
+      <div class="card">
+        <div class="card-head">
+          <h2>Katip takvimi</h2>
+          <button id="calendarRefresh" class="ghost small">Yenile</button>
+        </div>
+        <p id="calendarStatus" class="muted">Takvim durumu yükleniyor.</p>
+        <p class="fine">Onay kuyruğu: gelecek 24 saat ve yeni başlayan davetler. Onaylanan oluşuma başlangıçtan sonraki beş dakika içinde katılım denenir. İç ve güvenilir organizatörler önceliklidir; dış organizatör başına en fazla beş davet bekler. Yenilemeler arasında en az bir kontrol aralığı beklenir.</p>
+        <p id="calendarQueueWarning" class="error" role="alert" hidden>Kuyruk dolu</p>
+        <ul id="calendarUpcoming" class="health"></ul>
+        <p id="calendarResult" class="result"></p>
+      </div>
+    </section>
+
+    <!-- Toplantılar -->
+    <section data-view="meetings" hidden>
+      <div class="page-heading"><h1>Toplantılar</h1><p>Toplantı kayıtları, raporlar ve erişim izinleri.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div class="card">
+        <h2>Son toplantılar</h2>
+        <div class="table-wrap">
+          <table id="history">
+            <thead><tr><th>Tarih</th><th>Konu</th><th>Süre</th><th>Durum</th><th>Sahip</th><th>Rapor ve erişim</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="meetingMail" class="card stack" hidden aria-live="polite"></div>
+      <div id="meetingAccess" class="card stack" hidden>
+        <h2>Toplantı erişimi</h2>
+        <p id="meetingAccessOwner"></p>
+        <ul id="meetingGrants" class="list"></ul>
+        <form id="meetingGrantForm" class="stack">
+          <label>Panel hesabı<select id="meetingGrantAccount" required></select></label>
+          <label>İzin<select id="meetingGrantPermission"><option value="read">Okuma</option><option value="manage">Yönetme</option></select></label>
+          <button type="submit" class="primary">İzin ekle / güncelle</button>
+          <p id="meetingGrantResult" class="result"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Kullanım -->
+    <section data-view="usage" hidden>
+      <div class="page-heading"><h1>Kullanım</h1><p>Toplantı süresi ve tahmini maliyetler.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div class="card">
+        <div class="card-head">
+          <h2>Kullanım ve tahmini maliyet</h2>
+          <select id="usageDays"><option value="7">Son 7 gün</option><option value="30" selected>Son 30 gün</option><option value="90">Son 90 gün</option></select>
+        </div>
+        <div class="stats wide" id="usageTotals"></div>
+        <div class="table-wrap">
+          <table id="usage">
+            <thead><tr><th>Tarih</th><th>Konu</th><th>Dakika</th><th>Claude çağrısı</th><th>Claude</th><th>Soniox STT</th><th>Soniox TTS</th><th>Toplam</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="fine">Resmî fiyatlarla hesaplanan tahmindir; kesin fatura Anthropic, Soniox ve Railway konsollarındadır.</p>
+      </div>
+    </section>
+
+    <!-- Ayarlar -->
+    <section data-view="settings" hidden>
+      <div class="page-heading"><h1>Ayarlar</h1><p>Katip yapılandırması, katılım ve veri saklama politikaları.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <form id="settingsForm" class="settings-form">
+      <div class="card settings-group">
+        <h2>Teams uygulaması</h2>
+        <p>Sohbet komutları ve toplantı sahibi mail onay kartları için kuruluşunuza Katip'i ekleyin.</p>
+        <div class="actions"><a class="button" href="/api/admin/teams/package" download="katip-teams.zip">Teams uygulama paketi</a></div>
+        <p class="fine">Azure bot kimliği ve genel HTTPS adresi sunucu değişkenlerinden alınır.</p>
+      </div>
+      <div class="card settings-group">
+        <h2>Genel</h2>
+        <div class="form-grid">
+          <label>Şirket adı<input name="company_name" maxlength="100"></label>
+          <label>Bot adı (toplantıda görünen)<input name="bot_display_name" minlength="2" maxlength="60"></label>
+          <label>Varsayılan mod<select name="default_mode"><option value="tam">Tam katılım</option><option value="kayit">Sessiz kayıt</option></select></label>
+          <label>Cevap modu<select name="reply_mode"><option value="chat">Yazılı (chat)</option><option value="voice">Sesli</option></select></label>
+          <label>Konuşma dili<input name="source_lang" pattern="[a-z]{2}" maxlength="2"></label>
+          <label>Çeviri dili (boş = kapalı)<input name="target_lang" pattern="([a-z]{2})?" maxlength="2"></label>
+          <label>Katip'in sesi<input name="tts_voice" maxlength="40"></label>
+        </div>
+      </div>
+      <div class="card settings-group">
+        <h2>Takvim katılım politikası</h2>
+        <div class="form-grid">
+          <label class="policy-field">Politika<select name="calendar_join_policy"><option value="kapalı">Kapalı — takvimden katılma</option><option value="onay">Onay — her daveti onaya sun (önerilen)</option><option value="güvenilir">Güvenilir — güven listesindekilere otomatik katıl</option><option value="hepsi">Hepsi — tüm uygun davetlere otomatik katıl</option></select></label>
+          <label>Güvenilir alan adları (her satırda bir)<textarea name="calendar_organizer_domains" rows="3" maxlength="25400"></textarea></label>
+          <label>Güvenilir e-postalar (her satırda bir)<textarea name="calendar_organizer_emails" rows="3" maxlength="64200"></textarea></label>
+          <label>Günlük otomatik katılım sınırı (UTC)<input name="calendar_daily_autojoins" type="number" min="0" max="1000"></label>
+          <label>En fazla bekleyen davet<input name="calendar_max_pending" type="number" min="1" max="1000"></label>
+        </div>
+        <p id="calendarPolicyWarning" class="error" hidden>Hepsi önerilmez: dış ve istenmeyen davetler de otomatik bot başlatabilir ve kota tüketebilir.</p>
+        <p class="fine">Onay veya güvenilir önerilir. En fazla 100 alan adı ve 200 e-posta; alt alan adlarını ayrıca ekleyin. Organizatör adresi kriptografik kanıt değildir; Exchange sahtecilik koruması açık olmalıdır.</p>
+      </div>
+      <div class="card settings-group">
+        <h2>KVKK ve raporlar</h2>
+        <div class="form-grid">
+          <label>Katılınca aydınlatma metni<select name="privacy_notice_on_join"><option value="chat">Chat'e yaz</option><option value="voice">Chat'e yaz ve sesli oku</option><option value="off">Kapalı</option></select></label>
+          <label>KVKK başvuru adresi<input name="privacy_contact" maxlength="200" placeholder="kvkk@example.com"></label>
+          <label>Sunucu konumu cümlesi<input name="privacy_server_location" minlength="1" maxlength="300" required></label>
+          <label>Saklama süresi (gün, 0 = silme)<input name="retention_days" type="number" min="0" max="3650"></label>
+          <label>Paylaşım linki süresi (gün)<input name="share_link_days" type="number" min="1" max="30" step="1"></label>
+          <label class="check"><input name="post_report_to_chat" type="checkbox"> Rapor linkini toplantı chat'ine yaz</label>
+          <label class="check"><input name="report_batch" type="checkbox"> Final raporu Batch ile üret (%50 ucuz)</label>
+        </div>
+      </div>
+      <div class="card settings-group">
+        <h2>Harcama sınırları</h2>
+        <div class="form-grid">
+          <label>Tam katılımda en uzun süre (dk)<input name="max_meeting_minutes" type="number" min="10" max="240"></label>
+          <label>Sessiz kayıtta en uzun süre (dk)<input name="record_max_minutes" type="number" min="30" max="720"></label>
+          <label>Günlük toplam süre (dk)<input name="daily_meeting_minutes" type="number" min="30" max="1440"></label>
+          <label>Toplantı başına canlı istek<input name="max_agent_calls_per_meeting" type="number" min="5" max="500"></label>
+        </div>
+      </div>
+      <div class="card settings-footer">
+        <div class="actions"><button type="submit" class="primary">Kaydet</button><span id="settingsResult" class="result"></span></div>
+        <p class="fine">API anahtarları ve şifreleme anahtarları burada görünmez; yalnız Railway değişkenlerindedir.</p>
+
+      </div>
+      </form>
+    </section>
+
+    <!-- Marka -->
+    <section data-view="branding" hidden>
+      <div class="page-heading"><h1>Marka</h1><p>Toplantı asistanınızın logosu.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div class="card stack">
+        <h2>Logo</h2>
+        <div class="logo-preview"><img id="logoPreview" alt="Yüklü logo" hidden><span id="logoEmpty" class="muted">Henüz logo yüklenmedi.</span></div>
+        <input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp">
+        <div class="actions">
+          <button id="logoUpload" class="primary">Yükle</button>
+          <button id="logoRemove" class="ghost">Kaldır</button>
+          <span id="logoResult" class="result"></span>
+        </div>
+        <p class="fine">PNG, JPEG ya da WebP, en fazla 1 MB. Kare ya da yatay, şeffaf zeminli PNG önerilir.</p>
+      </div>
+    </section>
+
+    <!-- Kişiler -->
+    <section data-view="people" hidden>
+      <div class="page-heading"><h1>Kişiler</h1><p>Kayıtlı kişi profilleri ve ses izleri.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div class="card">
+        <h2>Kayıtlı kişiler</h2>
+        <div class="table-wrap">
+          <table id="people">
+            <thead><tr><th>Ad</th><th>E-posta</th><th>Rol</th><th>Ses izi</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p id="noPeople" class="muted">Kayıtlı kişi yok.</p>
+        <p class="fine">Silme işlemi ses izini ve profili siler, geçmiş kayıtlarda adı anonimleştirir.</p>
+      </div>
+    </section>
+
+    <section data-view="overview">
+      <div class="card stack">
+        <h2>Bekleyen talimatlar</h2>
+        <button id="approvalsRefresh" class="ghost small">Yenile</button>
+        <ul id="approvals" class="list"></ul>
+      </div>
+      <div class="card stack">
+        <h2>Katılımcı e-posta eşleştirmesi</h2>
+        <form id="identityLoadForm" class="stack">
+          <label>Toplantı ID<input id="identityMeeting" required maxlength="64"></label>
+          <div class="actions"><button type="submit">Katılımcıları getir</button><button id="microsoftSync" type="button">Microsoft 365'ten getir</button></div>
+        </form>
+        <ul id="identityCandidates" class="list"></ul>
+        <form id="identityBindForm" class="stack">
+          <label>Toplantıda görünen kişi veya konuşmacı<select id="identityName" required></select></label>
+          <label>E-posta<input id="identityEmail" type="email" required maxlength="320"></label>
+          <button type="submit" class="primary">Eşleştirmeyi doğrula</button>
+          <button id="identityReport" type="button">Rapor belgelerini yeniden oluştur</button>
+          <p id="identityResult" class="result"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Kullanıcılar -->
+    <section data-view="users" hidden>
+      <div class="page-heading"><h1>Kullanıcılar</h1><p>Panel hesapları ve son 30 günlük kullanım.</p></div>
+      <div class="card">
+        <h2>Panel hesapları</h2>
+        <div class="table-wrap"><table aria-label="Panel hesapları">
+          <thead><tr><th>Şirket e-postası</th><th>Yetki</th><th>Durum</th><th>Son görülme</th><th>Oturumlar</th><th>Toplantı (30 gün)</th><th>Dakika</th><th>Maliyet</th><th>İşlem</th></tr></thead>
+          <tbody id="panelAccounts"></tbody>
+        </table></div>
+      </div>
+      <div class="card stack">
+          <h2>Hesap aç / parolayı yenile</h2>
+          <p class="fine">Yönetici hesap ve ayarları yönetir; kullanıcı toplantı işlemleri yapar; izleyici toplantı kayıtlarını okur.</p>
+          <form id="accountForm" class="stack">
+            <label>Şirket e-postası<input name="email" type="email" required maxlength="320"></label>
+            <label>Parola<input name="password" type="password" autocomplete="new-password" required minlength="16" maxlength="256"></label>
+            <label>Yetki<select name="role"><option value="admin">Yönetici</option><option value="operator" selected>Kullanıcı</option><option value="viewer">İzleyici</option></select></label>
+            <button type="submit" class="primary">Hesap aç / parolayı yenile</button>
+            <p id="accountResult" class="result"></p>
+          </form>
+      </div>
+      <div class="card"><h2 id="userMeetingsTitle">Toplantılar</h2><ul id="userMeetings" class="list"></ul></div>
+    </section>
+    <!-- Güvenlik -->
+    <section data-view="security" hidden>
+      <div class="page-heading"><h1>Güvenlik</h1><p>Parola, oturumlar ve güvenlik olayları.</p></div>
+      <div class="ornament" aria-hidden="true"><svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14.8 5.2 19.2 4.8 18.8 9.2 22 12 18.8 14.8 19.2 19.2 14.8 18.8 12 22 9.2 18.8 4.8 19.2 5.2 14.8 2 12 5.2 9.2 4.8 4.8 9.2 5.2Z"/></svg></div>
+      <div class="grid two">
+        <form id="passwordForm" class="card stack">
+          <h2>Parola değiştir</h2>
+          <label>Mevcut parola<input name="current" type="password" autocomplete="current-password" required></label>
+          <label>Yeni parola<input name="new" type="password" autocomplete="new-password" minlength="16" required></label>
+          <label>Yeni parola (tekrar)<input name="again" type="password" autocomplete="new-password" minlength="16" required></label>
+          <button type="submit" class="primary">Değiştir</button>
+          <p id="passwordResult" class="result"></p>
+          <p class="fine">En az 16 karakter; büyük/küçük harf, rakam ve sembol karışımı. Değişince bu hesabın oturumları kapanır.</p>
+        </form>
+        <div class="card stack">
+          <div class="card-head"><h2>Açık oturumlar</h2><button id="logoutAll" class="ghost small">Tümünü kapat</button></div>
+          <ul id="adminSessions" class="list"></ul>
+          <h2>Son güvenlik olayları</h2>
+          <ul id="events" class="list"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="meetingDetail" aria-labelledby="meetingDetailTitle">
+  <div class="card-head"><h2 id="meetingDetailTitle">Toplantı</h2><button id="meetingDetailClose">Kapat</button></div>
+  <div id="meetingDetailLinks" class="actions"></div><div id="meetingDetailText"></div>
+</dialog>
+</body>
+</html>

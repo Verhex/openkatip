@@ -1,0 +1,42 @@
+*.sh text eol=lf
+*.Dockerfile text eol=lf
+
+# Private material is retained in this repository and omitted from public archives.
+verhex-ops/ export-ignore
+deploy/verhex/ export-ignore
+railway.json export-ignore
+docker/railway.Dockerfile export-ignore
+docker/entrypoint-railway.sh export-ignore
+docs/railway-kurulum.md export-ignore
+docs/test-skorlari.md export-ignore
+docs/maliyet.md export-ignore
+DESIGN.md export-ignore
+security_best_practices_report.md export-ignore
+.agents/ export-ignore
+.codex/ export-ignore
+engines/ops/M1_REPORT.md export-ignore
+engines/ops/M2_M3_REPORT.md export-ignore
+engines/ops/M4_M5_REPORT.md export-ignore
+engines/ops/RUNBOOK.md export-ignore
+docs/internal/ export-ignore
+plan.md export-ignore
+docs/katip-yetenekler.md export-ignore
+docs/kendi-toplanti-altyapisi.md export-ignore
+docs/kurulum-testi.md export-ignore
+docs/kvkk-veri-aktarimi.md export-ignore
+docs/teams-uygulamasi.md export-ignore
+docs/worker-kurulum.md export-ignore
+tests/test_verhex_deploy.py export-ignore
+tests/data/katip-tanitim.pdf export-ignore
+scripts/openkatip-denylist.txt export-ignore
+OPENKATIP_RELEASE_REPORT.md export-ignore
+.release-work/ export-ignore
+
+# İkili dosyalar satır sonu dönüşümünden korunur (CRLF dönüşümü PDF örneğini bozmuştu).
+*.pdf binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+*.wav binary
+*.onnx binary

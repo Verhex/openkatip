@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hesabım · Katip</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/admin/static/cini.css">
+  <link rel="stylesheet" href="/admin/static/admin.css">
+  <link rel="stylesheet" href="/hesap/static/hesap.css">
+  <script src="/hesap/static/hesap.js" defer></script>
+</head>
+<body>
+<div id="login" class="login">
+  <form id="loginForm" class="login-card stack">
+    <h1>Katip</h1><p>Toplantılarınıza ve hesabınıza giriş yapın.</p>
+    <label for="loginEmail">E-posta</label><input id="loginEmail" type="email" autocomplete="username" required maxlength="320">
+    <label for="loginPassword">Parola</label><input id="loginPassword" type="password" autocomplete="current-password" required maxlength="256">
+    <button class="primary" type="submit">Giriş yap</button><p id="loginError" class="error" role="alert"></p>
+  </form>
+</div>
+<div id="app" hidden>
+  <header class="topbar"><div class="workspace"><strong>Katip</strong><span id="identity"></span></div><button id="logout">Çıkış</button></header>
+  <main>
+    <section class="card" aria-labelledby="meetingsHeading">
+      <div class="card-head"><h1 id="meetingsHeading">Toplantılarım</h1><button id="refresh">Yenile</button></div>
+      <p id="empty" class="muted" hidden>Henüz erişebildiğiniz toplantı yok.</p>
+      <div class="table-wrap"><table aria-label="Toplantılarım"><thead><tr><th>Toplantı</th><th>Tarih</th><th>Süre</th><th>Durum</th></tr></thead><tbody id="meetings"></tbody></table></div>
+    </section>
+    <section id="detail" class="card" aria-labelledby="detailTitle" hidden>
+      <div class="card-head"><h2 id="detailTitle">Toplantı</h2><button id="closeDetail">Kapat</button></div>
+      <div id="meetingActions" class="actions"></div>
+      <h3>Transkript</h3><div id="transcript" class="transcript"></div>
+      <h3>Rapor</h3><div id="report" class="mail-preview"></div><div id="downloads" class="actions"></div>
+      <h3>Belgeler</h3><ul id="documents" class="list"></ul>
+      <form id="documentForm" class="stack" hidden>
+        <label for="documentFile">Toplantıya belge ekle (PDF, PPTX, DOCX, TXT)</label><input id="documentFile" type="file" accept=".pdf,.pptx,.docx,.txt" required>
+        <label class="check"><input id="presentation" type="checkbox">Sunum olarak kullan (PDF)</label>
+        <button type="submit">Belge yükle</button>
+      </form>
+      <div id="shareLinks" class="actions" aria-live="polite"></div>
+    </section>
+    <section id="join" class="card" hidden>
+      <h2>Katip'i toplantıya gönder</h2>
+      <form id="joinForm" class="stack">
+        <label for="joinUrl">Toplantı linki</label><input id="joinUrl" type="url" required maxlength="4096" placeholder="https://meet.google.com/…">
+        <label for="joinTitle">Toplantı adı</label><input id="joinTitle" maxlength="200">
+        <button type="submit" class="primary">Katip'i gönder</button>
+      </form>
+    </section>
+    <section class="card"><h2>Kullanımım</h2><p>Son 30 gün · erişebildiğiniz toplantılar</p><div id="usage" class="stats"></div></section>
+    <section class="card"><h2>Hesabım</h2><p id="accountIdentity"></p>
+      <form id="passwordForm" class="stack">
+        <label for="currentPassword">Mevcut parola</label><input id="currentPassword" type="password" autocomplete="current-password" required maxlength="256">
+        <label for="newPassword">Yeni parola</label><input id="newPassword" type="password" autocomplete="new-password" required minlength="16" maxlength="256">
+        <p class="fine">En az 16 karakter; büyük/küçük harf, rakam ve sembol karışımı. Değişince bu hesabın tüm oturumları kapanır.</p>
+        <button type="submit">Parolayı değiştir</button>
+      </form>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

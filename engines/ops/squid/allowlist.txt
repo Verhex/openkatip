@@ -1,0 +1,6 @@
+api.anthropic.com
+.slack.com
+.slack-edge.com
+api.github.com
+# api.openai.com
+# api.deepseek.com

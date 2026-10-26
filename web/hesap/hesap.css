@@ -1,0 +1,6 @@
+.topbar { margin-left: 0; }
+main { margin: 0 auto; max-width: 1100px; }
+.transcript { max-height: 420px; overflow: auto; white-space: pre-wrap; }
+#report { max-height: 520px; overflow: auto; }
+#meetingActions, #downloads, #shareLinks { margin: 16px 0; }
+#identity, #accountIdentity { overflow-wrap: anywhere; }

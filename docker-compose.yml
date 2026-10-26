@@ -1,0 +1,49 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    env_file: .env
+    environment:
+      KATIP_DATABASE_URL: postgresql+asyncpg://katip:katip@postgres:5432/katip
+      KATIP_REDIS_URL: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on: [postgres, redis]
+
+  # Toplanti basina bir bot konteyneri calistirilir:
+  #   docker compose run --rm bot --url <link> --session-id <id>
+  bot:
+    build:
+      context: .
+      dockerfile: docker/bot.Dockerfile
+    environment:
+      KATIP_INGEST_WS_URL: ws://api:8000/ws/ingest
+      KATIP_BOT_TOKEN: ${KATIP_BOT_TOKEN:-}
+      KATIP_BOT_SANDBOX: on
+    user: "1000:1000"
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+      - seccomp=docker/worker-seccomp.json
+    shm_size: "1gb"
+    depends_on: [api]
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: katip
+      POSTGRES_PASSWORD: katip
+      POSTGRES_DB: katip
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:

@@ -3,6 +3,7 @@ from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
 
 import pytest
+from conftest import TEST_PASSWORD
 from fastapi import HTTPException
 
 from katip.api.main import app
@@ -602,7 +603,7 @@ async def test_queue_roles_csrf_and_admin_only_settings(database, monkeypatch):
     from katip.api.auth import hash_password
     from katip.store import repo
 
-    password = "Katip-Test-Password-2026!"
+    password = TEST_PASSWORD
     hashed = hash_password(password)
     get_settings().calendar_join_policy = "onay"
     # Bu test Graph yerine yerel kuyruğu kullanır.

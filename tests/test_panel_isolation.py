@@ -8,6 +8,7 @@ from functools import partial
 from types import SimpleNamespace
 
 import pytest
+from conftest import OTHER_TEST_PASSWORD, TEST_PASSWORD
 from fastapi.routing import APIRoute
 from fastapi.testclient import TestClient
 from starlette.websockets import WebSocketDisconnect
@@ -24,7 +25,7 @@ from katip.store import repo
 from katip.workers import jobs
 
 ADMIN = {"Authorization": "Bearer test-admin"}
-PASSWORD = "Katip-Test-Password-2026!"
+PASSWORD = TEST_PASSWORD
 
 
 def login(client, name):
@@ -352,7 +353,7 @@ def test_password_change_revokes_all_account_sessions_only(isolated):
             headers=headers,
             json={
                 "current": PASSWORD,
-                "new": "New-Strong-Password-2026!",
+                "new": OTHER_TEST_PASSWORD,
             },
         ).json()["relogin"]
         is True

@@ -7,6 +7,7 @@ from functools import partial
 from types import SimpleNamespace
 
 import pytest
+from conftest import TEST_PASSWORD
 from fastapi.testclient import TestClient
 from sqlalchemy import text
 from starlette.websockets import WebSocketDisconnect
@@ -20,7 +21,7 @@ from katip.store import db, repo
 from katip.workers import jobs
 
 ADMIN = {"Authorization": "Bearer test-admin"}
-PASSWORD = "Katip-Test-Password-2026!"
+PASSWORD = TEST_PASSWORD
 
 
 @pytest.mark.parametrize("action", ["auto", "pause", "resume"])

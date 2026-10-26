@@ -11,6 +11,7 @@ from email.parser import BytesParser
 
 import httpx
 import pytest
+from conftest import TEST_PASSWORD
 from fastapi import HTTPException
 from sqlalchemy import select, text
 
@@ -284,7 +285,7 @@ def test_acl_and_request_limits(api_client, enabled):
             headers=ADMIN,
             json={
                 "email": f"{role}@example.com",
-                "password": "Katip-Test-Password-2026!",
+                "password": TEST_PASSWORD,
                 "role": role,
             },
         )
@@ -296,7 +297,7 @@ def test_acl_and_request_limits(api_client, enabled):
             "/api/auth/login",
             json={
                 "email": f"{role}@example.com",
-                "password": "Katip-Test-Password-2026!",
+                "password": TEST_PASSWORD,
             },
         )
         headers = {"X-CSRF-Token": login.json()["csrf"]}

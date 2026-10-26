@@ -1,9 +1,16 @@
 from __future__ import annotations
 
+import secrets as _secrets
+
 import pytest
 
 from katip.config import Settings, get_settings
 from katip.store import db
+
+# Test hesap parolaları her çalıştırmada üretilir; repoda sabit parola tutulmaz
+# (gizli bilgi tarayıcıları sabit test parolalarını gerçek sızıntı sanıyor).
+TEST_PASSWORD = "Kt1!" + _secrets.token_urlsafe(18)
+OTHER_TEST_PASSWORD = "Kt2!" + _secrets.token_urlsafe(18)
 
 
 @pytest.fixture(autouse=True)

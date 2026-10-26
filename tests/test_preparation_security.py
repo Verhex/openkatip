@@ -4,6 +4,7 @@ import io
 import zipfile
 
 import pytest
+from conftest import TEST_PASSWORD
 from fastapi.testclient import TestClient
 from sqlalchemy import select
 
@@ -18,7 +19,7 @@ from katip.store.db import session_scope
 from katip.store.models import PreparationDocument
 
 ADMIN = {"Authorization": "Bearer test-admin"}
-PASSWORD = "Katip-Test-Password-2026!"
+PASSWORD = TEST_PASSWORD
 
 
 def archive(files: dict[str, str]) -> bytes:

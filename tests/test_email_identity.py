@@ -6,6 +6,7 @@ from datetime import UTC, datetime
 
 import httpx
 import pytest
+from conftest import OTHER_TEST_PASSWORD
 from sqlalchemy import text
 from test_admin import PASSWORD, login
 from test_admin import client as admin_client_fixture
@@ -213,11 +214,11 @@ def test_reset_or_disable_account_revokes_existing_sessions(client):
     account = create_account(client).json()
     r = client.post("/api/auth/login", json={"email": account["email"], "password": PASSWORD})
     assert r.status_code == 200
-    assert create_account(client, password="Different-Pass-2026!").status_code == 200
+    assert create_account(client, password=OTHER_TEST_PASSWORD).status_code == 200
     assert client.get("/api/auth/me").status_code == 401
     assert (
         client.post(
-            "/api/auth/login", json={"email": account["email"], "password": "Different-Pass-2026!"}
+            "/api/auth/login", json={"email": account["email"], "password": OTHER_TEST_PASSWORD}
         ).status_code
         == 200
     )
@@ -235,7 +236,7 @@ def test_reset_or_disable_account_revokes_existing_sessions(client):
     )
     assert (
         client.post(
-            "/api/auth/login", json={"email": account["email"], "password": "Different-Pass-2026!"}
+            "/api/auth/login", json={"email": account["email"], "password": OTHER_TEST_PASSWORD}
         ).status_code
         == 401
     )
